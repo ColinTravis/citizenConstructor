@@ -4,38 +4,35 @@
       <Logo />
       <h1 class="title font-krona">citizenRegistration</h1>
       <div class="demo" augmented-ui="tl-clip br-clip exe">Test</div>
-<div>
-  <h1>QuestionIndex:</h1>
-  <p>
-    {{questionIndex}}
-  </p>
-  <h1>
-    Questions:
-  </h1>
-  <p>
-    {{questions}}
-  </p>
-</div>
+      <div>
+        <h1>QuestionIndex:</h1>
+        <p>{{ questionIndex }}</p>
+        <h1>Questions:</h1>
+        <p>{{ questions }}</p>
+      </div>
+      <div>
+        <!-- <button @click="testAlert">Fill PDF</button> -->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
-export default {  
+// import pdfFiller from 'pdffiller';
+import { mapGetters, mapState } from 'vuex';
+
+export default {
   computed: {
     ...mapState(['questions', 'questionIndex'])
-  }
-}
+  },
+  methods: {
+    
+  },
+  mounted() {}
+};
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-
 div.demo {
   display: inline-block;
   width: 110px;

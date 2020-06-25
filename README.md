@@ -60,7 +60,6 @@ yarn deploy:prod
 
 ### Authors
 
-This project was created by:
 - [@colintravis](http://github.com/colinTravis)
 
 ### Software

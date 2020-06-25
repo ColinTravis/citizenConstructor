@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         krona: ['Krona One'],
-        ethnocentric: ['Ethnocentric']
+        ethnocentric: ['Ethnocentric'],
       },
     },
   },
