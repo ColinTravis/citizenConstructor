@@ -7,6 +7,9 @@
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        'test-cyan': "#222222"
+      },
       fontFamily: {
         krona: ['Krona One'],
         ethnocentric: ['Ethnocentric'],

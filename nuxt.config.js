@@ -1,4 +1,4 @@
-
+const { theme } = require('./tailwind.config');
 const meta = {
   title: 'citizen.Constructor',
   description: 'Beginning Citizen Registration...',
@@ -58,22 +58,32 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       { rel: 'canonical', href: meta.url },
+      { rel:'stylesheet', type: 'text/css', href: 'https://unpkg.com/augmented-ui/augmented.css'}
+
     ],
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: {
+    color: theme.extend.colors['test-cyan'],
+  },
+
+  loadingIndicator: {
+    name: 'pulse',
+    color: theme.extend.colors['test-cyan'],
+  },
+
   /*
    ** Global CSS
    */
-  css: ['augmented-ui/augmented.css'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    { src: '~/plugins/vuex-persist', ssr: false }
+    // { src: '~/plugins/vuex-persist.js', ssr: false }
   ],
   /*
    ** Auto import components
