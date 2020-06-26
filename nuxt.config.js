@@ -1,6 +1,6 @@
 
 const meta = {
-  title: 'Citizen Constructor',
+  title: 'citizen.Constructor',
   description: 'Beginning Citizen Registration...',
   url: '',
   image: '/meta.jpg',
@@ -99,7 +99,7 @@ export default {
    */
   webfontloader: {
     google: {
-      families: ['Krona+One&display=swap'], //Loads Lato font with weights 400 and 700
+      families: ['Krona+One&display=block'], //Loads Lato font with weights 400 and 700
     },
   },
   /*

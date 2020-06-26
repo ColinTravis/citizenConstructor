@@ -1,4 +1,12 @@
+import character from './modules/character';
+import roles from './modules/roles';
+import { getField, updateField } from 'vuex-map-fields';
+
+
 export const state = () => ({
+  character: character,
+  roles: roles,
+  test: 'word',
   stepIndex: 0,
   questionIndex: 0,
   answers: [],
@@ -6,13 +14,18 @@ export const state = () => ({
     {
       title: 'Question 1',
       answers: ['A', 'B', 'C'],
-    }
+    },
   ],
 });
 
 export const mutations = {
+  updateField,
   NEXT_STEP(state) {
     state.stepIndex = state.stepIndex + 1;
+  },
+
+  updateMessage(state, message) {
+    state.character = message;
   },
 
   NEXT_QUESTION(state, answerIndex) {
@@ -37,6 +50,7 @@ export const mutations = {
 };
 
 export const getters = {
+  getField,
   progress(state) {
     if (state.questionIndex === state.questions.length) {
       return '100%';

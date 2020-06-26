@@ -1,3 +1,6 @@
+// Completely stolen from the real hero @Hopding
+// https://github.com/Hopding/pdf-lib/issues/48
+
 const fs = require('fs');
 const {
   drawImage,

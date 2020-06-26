@@ -1,134 +1,84 @@
 <template>
-  <div id="wrapper">
-    <div id="numberWrapper">
-      <h1 id="score"></h1>
-    </div>
-
+  <div class="dice">
     <div class="sideSelectors">
-      <button id="sixSide">Six Sides</button>
-      <button id="twelveSide">Twelve Sides</button>
+      <button @click="changeSides(6)">Six Sides</button>
+      <button @click="changeSides(10)">Ten Sides</button>
+      <h1>SIDES: {{ dice.sides }}</h1>
     </div>
-    <button id="rollButton">Roll</button>
+    <div>
+      <label class="block">
+        <span class="text-gray-700">Number of Dice to Roll</span>
+        <input
+          id="numberOfDice"
+          class="form-input mt-1 block w-full"
+          type="number"
+          min="1"
+          max="8"
+          value="1"
+          v-model="dice.numberOfDice"
+        />
+      </label>
+    </div>
+    <div
+      class="diceResult items-center justify-center flex-col text-black"
+      augmented-ui="tl-clip br-clip exe"
+    >
+      <h1 class="font-ethnocentric text-5xl">{{ diceResult }}</h1>
+    </div>
+    <button id="rollButton" @click="roll()">Roll</button>
+    <button id="rollButton" @click="resetDice()">Reset</button>
   </div>
 </template>
 
 <script>
 export default {
-    methods() {
-let dice = {
-  sides: 6,
-  roll: function () {
-    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-    return randomNumber;
-  }
-}
-
-//Prints dice roll to the page
-
-function printNumber(number) {
-  var numberScore = $("#score");
-  numberScore.html(number);
-}
-
-var sixSide = $("#sixSide");
-var twelveSide = $("#twelveSide");
-var rollButton = $("#rollButton");
-
-function activeButton(clickedButton){
-  var buttonToChange = clickedButton;
-  $('.sideSelectors').children('button').removeClass('clicked');
-  buttonToChange.addClass('clicked');
-}
-
-sixSide.click(function(){
-  dice.sides = 6;
-});
-
-twelveSide.click(function(){
-  dice.sides = 12;
-  activeButton(this);
-});
-
-rollButton.click(function(){
-  var result = dice.roll();
-  console.log(result);
-  printNumber(result);
-});
-    }
-
-}
+  props: {
+    dice: {
+      type: Object,
+      default: {
+        numberOfDice: 1,
+        sides: 6,
+      },
+    },
+  },
+  data() {
+    return {
+      diceResult: null,
+    };
+  },
+  methods: {
+    resetDice() {
+      this.diceResult = null;
+    },
+    roll() {
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      let randomNumber;
+      let dicePool = [];
+      for (let i = 0; i < this.dice.numberOfDice; i++) {
+        randomNumber = Math.floor(Math.random() * this.dice.sides) + 1;
+        dicePool.push(randomNumber);
+      }
+      this.diceResult = dicePool.reduce(reducer);
+    },
+    changeSides(numberOfSides) {
+      this.resetDice();
+      this.dice.sides = numberOfSides;
+    },
+  },
+};
 </script>
 
 <style scoped>
-#wrapper {
+.diceResult {
   display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-button {
-  border-radius: 20px;
-  background-color: #00a7c9;
-  outline: none;
-  border: none;
-  -webkit-appearance: none;
-  padding: 10px 15px;
-  color: white;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-family: 'Futura';
-  cursor: pointer;
-  margin-top: 10px;
-  min-width: 120px;
-}
-
-button:hover {
-  background-color: #00a1c1;
-}
-#rollButton {
-  display: inline-block;
-  position: relative;
-}
-
-#sixSide {
-  display: inline-block;
-  position: relative;
-}
-
-#twelveSide {
-  flex-direction: row;
-}
-
-.clicked {
-  background-color: blue;
-}
-
-#numberWrapper {
-  height: 50px;
-  width: 50px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid gray;
-  border-radius: 10px;
-}
-
-#score {
-  font-family: 'Futura';
-  font-weight: 600;
-  color: #00a7c9;
-  margin: 0;
-  padding: 0;
-}
-
-.sideSelectors {
-  display: block;
-  position: relative;
+  width: 110px;
+  height: 110px;
+  @apply m-5;
+  @apply p-5;
+  @apply text-center;
+  --aug-border: 5px;
+  --aug-inset: 5px;
+  --aug-border-bg: gold;
+  --aug-inset-bg: gold;
 }
 </style>
