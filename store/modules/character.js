@@ -1,6 +1,6 @@
 export default {
   handle: null,
-  role: null,
+  charRole: null,
   age: null,
   charPoints: null,
   stats: {

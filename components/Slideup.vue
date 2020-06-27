@@ -12,7 +12,7 @@
           <div class="modal-body">
             <h1>Character Handle: {{ character.handle }}</h1>
             <h1>Character Age: {{character.age}}</h1>
-            <h1>Character Role: {{character.role}}</h1>
+            <h1>Character Role: {{character.charRole}}</h1>
             <h1>Character Points: {{character.charPoints}}</h1>
             {{character}}
           </div>
