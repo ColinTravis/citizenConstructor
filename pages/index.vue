@@ -2,24 +2,9 @@
   <div class="container">
     <div>
       <h1 class="title font-krona">citizenRegistration</h1>
-      <!-- <div class="demo" augmented-ui="tl-clip br-clip exe">Test</div> -->
-      <accordion title="Intro Stuff">
-        <label class="block">
-          <span class="text-gray-700">Handle</span>
-          <input class="form-input mt-1 block w-full" v-model="handle" />
-        </label>
-        <label class="block">
-          <span class="text-gray-700">Age</span>
-          <input
-            class="form-input mt-1 block w-full"
-            type="number"
-            placeholder="20"
-            v-model="age"
-          />
-            <!-- v-model="character.age" -->
-        </label>
-      </accordion>
-      <accordion title="Role"></accordion>
+
+      <Form />
+     
       <div class="wrapper-test text-white mt-12">
         <h1>QuestionIndex:</h1>
         <!-- <p>{{ questionIndex }}</p> -->
@@ -42,14 +27,14 @@
 </template>
 
 <script>
-import { mapFields } from 'vuex-map-fields';
+// import { mapFields } from 'vuex-map-fields';
 // import { mapGetters, mapState } from 'vuex';
 
 export default {
-  computed: {
-    ...mapFields(['character.handle','character.age'])
-    // ...mapState(['questions', 'questionIndex', 'character']),
-  },
+  // computed: {
+  // ...mapFields(['character.handle', 'character.age']),
+  //   // ...mapState(['questions', 'questionIndex', 'character']),
+  // },
   data() {
     return {
       modalVisible: true,
@@ -60,7 +45,6 @@ export default {
       this.modalVisible = value;
     },
   },
-  mounted() {},
 };
 </script>
 

@@ -1,3 +1,7 @@
 export default {
-roles: {}
+roles: {
+    netrunner: null,
+    solo: null,
+    fixer: null
+}
 };

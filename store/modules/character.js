@@ -1,7 +1,7 @@
 export default {
-  handle: 'Cyboman',
+  handle: null,
   role: null,
-  age: '21',
+  age: null,
   charPoints: null,
   stats: {
     int: null,
