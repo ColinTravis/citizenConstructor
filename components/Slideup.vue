@@ -58,7 +58,9 @@ export default {
   @apply fixed;
   left: 50%;
   transform: translateX(-50%);
-  transition: height cubic-bezier(0.165, 0.84, 0.44, 1) 1s;
+  @apply transition-height;
+  @apply duration-1000;
+  @apply ease-ease-in-cubic;
 }
 .modal-mask.active::before {
   opacity: 1;
@@ -67,14 +69,16 @@ export default {
 .modal-mask::before {
   content: '';
   background-color: rgba(0, 0, 0, 0.8);
-  opacity: 0;
+  @apply opacity-0;
+  @apply fixed;
   @apply z-0;
-  @apply absolute;
   @apply top-0;
   @apply left-0;
   @apply h-screen;
   @apply w-screen;
-  transition: opacity cubic-bezier(0.165, 0.84, 0.44, 1) 1s;
+  @apply transition-opacity;
+  @apply duration-1000;
+  @apply ease-ease-in-cubic;
   @apply pointer-events-none;
 }
 </style>
