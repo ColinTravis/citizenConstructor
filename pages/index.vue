@@ -4,8 +4,7 @@
       <h1 class="title font-krona">citizenRegistration</h1>
 
       <Form />
-     
-      <div class="wrapper-test text-white mt-12">
+      <div v-if="isDev" class="wrapper-test text-white mt-12">
         <h1>QuestionIndex:</h1>
         <!-- <p>{{ questionIndex }}</p> -->
         <h1>Questions:</h1>
@@ -29,7 +28,6 @@
 <script>
 // import { mapFields } from 'vuex-map-fields';
 // import { mapGetters, mapState } from 'vuex';
-
 export default {
   // computed: {
   // ...mapFields(['character.handle', 'character.age']),
@@ -38,6 +36,7 @@ export default {
   data() {
     return {
       modalVisible: true,
+      isDev: process.env.NODE_ENV === 'development'
     };
   },
   methods: {
@@ -49,18 +48,6 @@ export default {
 </script>
 
 <style>
-div.demo {
-  display: inline-block;
-  width: 110px;
-  height: 110px;
-  margin: 10px;
-  --aug-border: 5px;
-  --aug-inset: 5px;
-  padding: 10px; /* mind the gap */
-  text-align: center;
-  --aug-border-bg: gold;
-  --aug-inset-bg: gold;
-}
 .wrapper-test {
   background: linear-gradient(to bottom right, rgba(3, 2, 3, 0.7), transparent),
     repeating-radial-gradient(

@@ -2,21 +2,32 @@ import character from './modules/character';
 import roles from './modules/roles';
 import { getField, updateField } from 'vuex-map-fields';
 
+const isDev = process.env.NODE_ENV === 'development';
 
-export const state = () => ({
-  character: character,
-  roles: roles,
-  test: 'word',
-  stepIndex: 0,
-  questionIndex: 0,
-  answers: [],
-  questions: [
-    {
-      title: 'Question 1',
-      answers: ['A', 'B', 'C'],
-    },
-  ],
-});
+function initialState() {
+  return {
+    character: character,
+    roles: roles,
+    stepIndex: 0,
+    questionIndex: 0,
+    answers: [],
+    questions: [
+      {
+        title: 'Question 1',
+        answers: ['A', 'B', 'C'],
+      },
+    ],
+  };
+}
+
+export const state = () => initialState();
+
+export const actions = {
+  reset({ commit }) {
+    window.localStorage.removeItem('constructedCitizen');
+    commit('RESET');
+  },
+};
 
 export const mutations = {
   updateField,
@@ -46,6 +57,12 @@ export const mutations = {
     state.stepIndex = 0;
     state.questionIndex = 0;
     state.answers = [];
+  },
+  RESET(state) {
+    const s = initialState();
+    Object.keys(s).forEach((key) => {
+      state[key] = s[key];
+    });
   },
 };
 

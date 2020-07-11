@@ -21,6 +21,9 @@
             <button class="modal-default-button" @click="triggerExpand(close)">
               OK
             </button>
+            <button class="modal-default-button" @click="reset">
+              Reset Character
+            </button>
           </div>
         </div>
       </div>
@@ -28,7 +31,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
@@ -43,6 +46,7 @@ export default {
     triggerExpand(expandStatus) {
       this.expanded = expandStatus;
     },
+    ...mapActions(['reset'])
   },
 };
 </script>

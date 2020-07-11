@@ -18,7 +18,8 @@
     "nuxt-webfontloader": "^1.1.0",
     "pdf-lib": "^0.4.0",
     "sass-loader": "^8.0.2",
-    "vuex-map-fields": "^1.4.0"
+    "vuex-map-fields": "^1.4.0",
+    "vuex-persist": "^2.0.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.0.0",
