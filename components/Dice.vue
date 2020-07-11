@@ -44,6 +44,7 @@ export default {
   data() {
     return {
       diceResult: null,
+      isDev: process.env.NODE_ENV === 'development'
     };
   },
   methods: {
@@ -58,7 +59,9 @@ export default {
         randomNumber = Math.floor(Math.random() * this.dice.sides) + 1;
         dicePool.push(randomNumber);
       }
+      if(this.isDev){console.log("Rolled ", this.dice.numberOfDice, this.dice.sides, "sided dice giving rolls of: ", dicePool)}
       this.diceResult = dicePool.reduce(reducer);
+      if(this.isDev){console.log("The sum of the dice is: ", this.diceResult)}
     },
     changeSides(numberOfSides) {
       this.resetDice();
