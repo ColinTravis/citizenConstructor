@@ -27,16 +27,16 @@
 
 <script>
 // import { mapFields } from 'vuex-map-fields';
-// import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 export default {
-  // computed: {
-  // ...mapFields(['character.handle', 'character.age']),
-  //   // ...mapState(['questions', 'questionIndex', 'character']),
-  // },
+  computed: {
+    // ...mapFields(['character.handle', 'character.age']),
+    ...mapState(['character', 'skills', 'roles']),
+  },
   data() {
     return {
       modalVisible: true,
-      isDev: process.env.NODE_ENV === 'development'
+      isDev: process.env.NODE_ENV === 'development',
     };
   },
   methods: {

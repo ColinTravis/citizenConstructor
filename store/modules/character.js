@@ -1,3 +1,5 @@
+import skills from './skills';
+
 export default {
   handle: null,
   charRole: null,

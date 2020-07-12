@@ -1,5 +1,7 @@
 import character from './modules/character';
 import roles from './modules/roles';
+import skills from './modules/skills';
+
 import { getField, updateField } from 'vuex-map-fields';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -8,6 +10,7 @@ function initialState() {
   return {
     character: character,
     roles: roles,
+    skills: skills.masterSkillList,
     stepIndex: 0,
     questionIndex: 0,
     answers: [],

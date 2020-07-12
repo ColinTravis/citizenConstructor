@@ -2,7 +2,7 @@
   <!-- --------------- -->
   <!-- Basic Character -->
   <!-- --------------- -->
-  <accordion title="Intro Stuff">
+  <accordion title="Intro Stuff" :expanded="true">
     <label class="block">
       <span class="text-gray-700">Handle</span>
       <input class="form-input mt-1 block w-full" v-model="handle" />

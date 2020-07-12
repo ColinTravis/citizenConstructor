@@ -5,7 +5,6 @@ export default ({ store }) => {
     new VuexPersistence({
       key: 'constructedCitizen',
       reducer: (state) => ({
-        roles: state.roles,
         character: state.character,
       }),
     }).plugin(store);

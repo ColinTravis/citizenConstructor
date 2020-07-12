@@ -11,10 +11,14 @@
         <div v-if="expanded">
           <div class="modal-body">
             <h1>Character Handle: {{ character.handle }}</h1>
-            <h1>Character Age: {{character.age}}</h1>
-            <h1>Character Role: {{character.charRole}}</h1>
-            <h1>Character Points: {{character.charPoints}}</h1>
-            {{character}}
+            <h1>Character Age: {{ character.age }}</h1>
+            <h1>Character Role: {{ character.charRole }}</h1>
+            <h1>Character Points: {{ character.charPoints }}</h1>
+            {{ character }}
+            <h1 class="text-black text-lg">Skills:</h1>
+            <div v-for="(skill, skillIndex) in skills" :key="skillIndex">
+              <p>{{ skill.name }} : {{skill.points}}</p>
+            </div>
           </div>
 
           <div class="modal-footer">
@@ -35,7 +39,7 @@ import { mapGetters, mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['character']),
+    ...mapState(['character', 'skills']),
   },
   data() {
     return {
@@ -46,7 +50,7 @@ export default {
     triggerExpand(expandStatus) {
       this.expanded = expandStatus;
     },
-    ...mapActions(['reset'])
+    ...mapActions(['reset']),
   },
 };
 </script>
@@ -54,6 +58,8 @@ export default {
 <style lang="postcss" scoped>
 .expanded-sheet {
   @apply h-screen;
+  @apply overflow-y-scroll;
+  @apply p-6;
 }
 .collapsed-sheet {
   @apply h-16;

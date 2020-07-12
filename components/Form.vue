@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <BasicCharacter/>
+    <CharPoints />
     <Roles/>
+    <Skills />
   </div>
 </template>
 
@@ -10,7 +12,7 @@ import { mapFields } from 'vuex-map-fields';
 export default {
   computed: {
     ...mapFields([
-      'character.charPoints',
+
     ]),
     // ...mapState(['questions', 'questionIndex', 'character']),
   },
