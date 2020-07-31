@@ -6,7 +6,6 @@ export default {
     { name: 'Credibility', points: 0 },
     { name: 'Family', points: 0 },
     { name: 'Interface', points: 0 },
-    { name: 'Authority', points: 0 },
     { name: 'Jury Rig', points: 0 },
     { name: 'Medical Tech', points: 0 },
     { name: 'Resources', points: 0 },

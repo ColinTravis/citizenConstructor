@@ -18,7 +18,7 @@
                 roleSkill
               }}</span>
               <input
-                v-if="getIndex(skills, roleSkill)"
+              v-if="getIndex(skills, roleSkill) >= 0"
                 class="form-input mt-1 block w-full"
                 type="number"
                 v-model="skills[getIndex(skills, roleSkill)].points"
@@ -53,6 +53,19 @@
         </div>
       </div>
     </accordion>
+    <accordion>
+      <div v-for="(skill, skillName) in skills" :key="skillName">
+        <label class="inline-flex items-center">
+          <span class="ml-2 text-orange-500">{{skill.name}}</span>
+          <input
+            class="form-input mt-1 block w-full"
+            type="number"
+            v-model="skill.points"
+            required
+          />
+        </label>
+      </div>
+    </accordion>
     <Slideup @close="modalVisible = false" />
   </div>
 </template>
@@ -64,7 +77,7 @@ export default {
   data() {
     return {
       testForm: {},
-      modalVisible: false
+      modalVisible: false,
     };
   },
   computed: {

@@ -6,6 +6,7 @@ export default ({ store }) => {
       key: 'constructedCitizen',
       reducer: (state) => ({
         character: state.character,
+        skills: state.skills
       }),
     }).plugin(store);
   });
