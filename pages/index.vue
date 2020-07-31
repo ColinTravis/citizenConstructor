@@ -11,10 +11,10 @@
         <!-- <p>{{ questions }}</p> -->
       </div>
       <div class="mt-12 border-t-4 border-black">
-        <Dice :dice="{ sides: 10, numberOfDice: 9 }" />
+        <Dice :dice="{ sides: 10, numberOfDice: 9, allowedRolls: 9 }" />
       </div>
       <div class="mt-12 border-t-4 border-black">
-        <Dice :dice="{ sides: 3, numberOfDice: 3 }" />
+        <Dice :dice="{ sides: 3, numberOfDice: 3, allowedRolls: 2 }" />
       </div>
 
       <div>

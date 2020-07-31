@@ -14,6 +14,7 @@
             <h1>Character Age: {{ character.age }}</h1>
             <h1>Character Role: {{ character.charRole }}</h1>
             <h1>Character Points: {{ character.charPoints }}</h1>
+            <h1>Available Points: {{ character.availCharPoints }}</h1>
             {{ character }}
             <h1 class="text-black text-lg">Skills:</h1>
             <div v-for="(skill, skillIndex) in skills" :key="skillIndex">

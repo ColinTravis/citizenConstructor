@@ -3,6 +3,7 @@
     <BasicCharacter/>
     <CharPoints />
     <Roles/>
+    <Stats :expanded="true"/>
     <Skills />
   </div>
 </template>
