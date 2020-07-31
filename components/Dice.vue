@@ -1,12 +1,12 @@
 <template>
   <div class="dice">
     <div class="sideSelectors">
-      <button @click="changeSides(6)">Six Sides</button>
-      <button @click="changeSides(10)">Ten Sides</button>
-      <h1>SIDES: {{ dice.sides }}</h1>
+      <button v-if="debug" @click="changeSides(6)">Six Sides</button>
+      <button v-if="debug" @click="changeSides(10)">Ten Sides</button>
+      <h1 v-if="debug">SIDES: {{ dice.sides }}</h1>
     </div>
     <div>
-      <label class="block">
+      <label v-if="debug" class="block">
         <span class="text-gray-700">Number of Dice to Roll</span>
         <input
           id="numberOfDice"
@@ -19,59 +19,76 @@
         />
       </label>
     </div>
+    <div v-if="debug">Times rolled: {{ timesRolled }}</div>
+    <div v-if="debug">Allowed rolls: {{ dice.allowedRolls }}</div>
     <div
       class="diceResult items-center justify-center flex-col text-black"
       augmented-ui="tl-clip br-clip exe"
     >
       <h1 class="font-ethnocentric text-5xl">{{ diceResult }}</h1>
     </div>
-    <button id="rollButton" @click="roll()">Roll</button>
-    <button id="rollButton" @click="resetDice()">Reset</button>
+    <button v-if="!hasRolled" id="rollButton" @click="roll()">Roll</button>
+    <button v-if="debug" id="rollButton" @click="resetDice()">Reset</button>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    debug: false,
     dice: {
       type: Object,
       default: {
         numberOfDice: 1,
         sides: 6,
+        allowedRolls: 1,
       },
     },
   },
   data() {
     return {
       diceResult: null,
+      hasRolled: false,
+      timesRolled: 0,
       isDev: process.env.NODE_ENV === 'development',
     };
   },
   methods: {
     resetDice() {
       this.diceResult = null;
+      this.hasRolled = false;
+      this.timesRolled = 0;
     },
     roll() {
-      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      let randomNumber;
-      let dicePool = [];
-      for (let i = 0; i < this.dice.numberOfDice; i++) {
-        randomNumber = Math.floor(Math.random() * this.dice.sides) + 1;
-        dicePool.push(randomNumber);
-      }
-      if (this.isDev) {
-        console.log(
-          'Rolled ',
-          this.dice.numberOfDice,
-          this.dice.sides,
-          'sided dice giving rolls of: ',
-          dicePool
-        );
-      }
-      this.diceResult = dicePool.reduce(reducer);
-      this.$emit('result', this.diceResult);
-      if (this.isDev) {
-        console.log('The sum of the dice is: ', this.diceResult);
+      if (this.timesRolled < this.dice.allowedRolls) {
+        const reducer = (accumulator, currentValue) =>
+          accumulator + currentValue;
+        let randomNumber;
+        let dicePool = [];
+        for (let i = 0; i < this.dice.numberOfDice; i++) {
+          randomNumber = Math.floor(Math.random() * this.dice.sides) + 1;
+          dicePool.push(randomNumber);
+        }
+        if (this.isDev) {
+          console.log(
+            'Rolled ',
+            this.dice.numberOfDice,
+            this.dice.sides,
+            'sided dice giving rolls of: ',
+            dicePool
+          );
+        }
+        this.diceResult = dicePool.reduce(reducer);
+        this.$emit('result', this.diceResult);
+        this.timesRolled++;
+        if (this.timesRolled === this.dice.allowedRolls) {
+          this.hasRolled = true;
+        }
+        if (this.isDev) {
+          console.log('The sum of the dice is: ', this.diceResult);
+        }
+      } else {
+        this.hasRolled = true;
       }
     },
     changeSides(numberOfSides) {
