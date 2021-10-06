@@ -5,10 +5,12 @@
   <accordion title="Character Points">
     <label class="block">
       <span class="text-gray-700">Points</span>
+      <h1>{{availCharPoints}}</h1>
         <input
           class="form-input mt-1 block w-full"
           type="number"
-          v-model="updatePoints"
+          v-model="availCharPoints"
+          disabled
         />
       <div class="mt-12 border-t-4 border-black">
         <Dice
